@@ -50,7 +50,17 @@ const concat = (a, b) => {
 };
 
 const result = concat(arrayEven, arrayOdd);
-console.log(result)
+console.log(result);
+
+// Implementa una versión del ejercicio anterior donde se acepten múltiples arrays de entrada(más de 2).
+const newArray = [9, 10];
+
+const concatMultipleArrays = (...arrays) => {
+    return arrays.reduce((result, currentArray) => [...result, ...currentArray], []);
+};
+
+const resultConcat = concatMultipleArrays(arrayEven, arrayOdd, newArray);
+console.log(resultConcat);
 
 // 3. Clone Merge
 
@@ -63,7 +73,7 @@ const person = {
 };
 
 function clone(source) {
-    return { ...source }
+    return { ...source };
 };
 
 const newObject = clone(person);
@@ -77,16 +87,9 @@ const a = { name: "Maria", surname: "Ibañez", country: "SPA" };
 const b = { name: "Luisa", age: 31, married: true };
 
 function merge(source, target) {
-    const objectTarget = clone(target);
-
-    for (const key in source) {
-        if (source.hasOwnProperty(key)) {
-            objectTarget[key] = source[key];
-        };
-    };
-
-    return objectTarget;
-}
+    const merged = { ...target, ...source };
+    return merged
+};
 
 const resultClone = merge(a, b);
 console.log(resultClone);
